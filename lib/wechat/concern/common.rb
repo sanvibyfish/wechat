@@ -202,6 +202,14 @@ module Wechat
         post 'getusercumulate', JSON.generate(begin_date: begin_date, end_date: end_date), base: Wechat::Api::DATACUBE_BASE
       end
 
+      def wxa_msg_sec_check(content) 
+        post 'msg_sec_check',  JSON.generate(content: content), base: Wechat::Api::WXA_BASE
+      end
+
+      def wxa_img_sec_check(file)
+        post_file 'img_sec_check', file ,base: Wechat::Api::WXA_BASE
+      end
+
       def addvoicetorecofortext(voice_id, file, file_format = 'mp3', lang = 'zh_CN')
         post_file 'media/voice/addvoicetorecofortext', file, params: { format: file_format, voice_id: voice_id, lang: lang }
       end
